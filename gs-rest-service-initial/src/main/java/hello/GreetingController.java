@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,5 +23,14 @@ public class GreetingController {
 	public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
 		return new Greeting(counter.incrementAndGet(),
 				String.format(template, name));		
+	}
+	
+	@RequestMapping("/greetingList")
+	public List<Greeting> greetingList(@RequestParam(value="name", defaultValue="The Universe") String name) {
+		List<Greeting> greetingList = new ArrayList<Greeting>();
+		greetingList.add(new Greeting(counter.incrementAndGet(), String.format(template, name)));
+		greetingList.add(new Greeting(counter.incrementAndGet(), String.format(template, name)));
+		greetingList.add(new Greeting(counter.incrementAndGet(), String.format(template, name)));
+		return greetingList;
 	}
 }
