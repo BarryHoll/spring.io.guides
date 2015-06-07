@@ -20,13 +20,23 @@ public class GreetingController {
 	private final AtomicLong counter = new AtomicLong();
 	
 	@RequestMapping("/greeting")
-	public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
+	public Greeting greeting(@RequestParam(value="name", defaultValue="Life") String name) {
 		return new Greeting(counter.incrementAndGet(),
 				String.format(template, name));		
 	}
 	
 	@RequestMapping("/greetingList")
 	public List<Greeting> greetingList(@RequestParam(value="name", defaultValue="The Universe") String name) {
+		return getTestGreetingList(name);
+	}
+	
+	@RequestMapping("/greetings")
+	public Greetings greetings(@RequestParam(value="name", defaultValue="Everything") String name) {
+		Greetings greetings = new Greetings(getTestGreetingList(name));	
+		return greetings;
+	}
+	
+	private List<Greeting> getTestGreetingList(String name) {
 		List<Greeting> greetingList = new ArrayList<Greeting>();
 		greetingList.add(new Greeting(counter.incrementAndGet(), String.format(template, name)));
 		greetingList.add(new Greeting(counter.incrementAndGet(), String.format(template, name)));
