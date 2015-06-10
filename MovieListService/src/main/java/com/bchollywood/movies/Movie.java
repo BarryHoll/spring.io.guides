@@ -27,7 +27,7 @@ public class Movie {
 	Movie() {}
 	
 	public Movie(Account account, String title, String director, 
-			String year, int runningTime, boolean watched) {
+			String year, int runningTime) {
 		this.account = account;
 		this.title = title;
 		this.director = director;
