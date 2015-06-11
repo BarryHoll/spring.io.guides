@@ -2,11 +2,9 @@ package com.bchollywood.movies;
 
 import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-public class MovieListServiceApplication {
+public class Application {
 	
 	@Bean
 	CommandLineRunner init(AccountRepository accountRepository,
@@ -30,7 +28,7 @@ public class MovieListServiceApplication {
 	}
 
     public static void main(String[] args) {
-        SpringApplication.run(MovieListServiceApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
